@@ -1,0 +1,95 @@
+.track {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  position: relative;
+}
+
+.track::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 48px;
+  height: 1px;
+  background: var(--gold-soft);
+}
+
+.step {
+  position: relative;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.num {
+  display: block;
+  font-family: var(--font-serif);
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px solid var(--gold);
+  display: grid;
+  place-items: center;
+  color: var(--green);
+  position: relative;
+  z-index: 1;
+}
+
+.step h3 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.step p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.leaves {
+  width: 180px;
+  margin-left: auto;
+  opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+  .track {
+    grid-template-columns: 1fr;
+    padding-left: 18px;
+  }
+
+  .track::before {
+    left: 25px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    height: auto;
+  }
+
+  .step {
+    text-align: left;
+    padding-left: 56px;
+  }
+
+  .icon {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    margin: 0;
+  }
+
+  .num {
+    text-align: left;
+  }
+}

@@ -1,0 +1,52 @@
+.list {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  background: var(--cream);
+  border-radius: 16px;
+  border: 1px solid rgba(197, 164, 119, 0.18);
+}
+
+.item button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: var(--blue-dark);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.item button svg {
+  transition: transform 0.2s ease;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.open {
+  transform: rotate(180deg);
+}
+
+.panel {
+  padding: 0 18px 16px;
+}
+
+.panel p {
+  color: var(--text-muted);
+  max-width: 52rem;
+}
+
+.item h3 {
+  margin: 0;
+  font-size: inherit;
+}

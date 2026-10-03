@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чудный продукт — Ersağ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f7f4;
+            color: #2c3e2e;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ---------- Шапка ---------- */
+        header {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 30px 0;
+            border-bottom: 3px solid #a5d6a7;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #1b5e20;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: #2e7d32;
+            margin: 30px 0 15px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: #388e3c;
+            margin: 20px 0 10px;
+        }
+
+        /* ---------- Секции ---------- */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #c8e6c9;
+            scroll-margin-top: 20px;
+        }
+
+        section:last-of-type { border-bottom: none; }
+
+        /* ---------- Карточки ---------- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e0f2e1;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .card h3 { margin-top: 0; }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #4a5b4c;
+            flex-grow: 1;
+        }
+
+        /* ---------- Кнопки ---------- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #4caf50;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #388e3c;
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #2e7d32;
+            border: 2px solid #4caf50;
+        }
+
+        .btn-outline:hover {
+            background: #e8f5e9;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        /* ---------- Картинки ---------- */
+        .img-block {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 20px 0;
+            display: block;
+            background: #e8f5e9;
+        }
+
+        .img-round {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px;
+            border: 4px solid #a5d6a7;
+        }
+
+        .img-small {
+            max-height: 200px;
+        }
+
+        /* ---------- Документы ---------- */
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .doc-item {
+            background: #f9fdf9;
+            border: 1px solid #c8e6c9;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        .doc-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: #e8f5e9;
+        }
+
+        /* ---------- Шаги ---------- */
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .step {
+            flex: 1 1 160px;
+            background: white;
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border-left: 5px solid #4caf50;
+        }
+
+        .step-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4caf50;
+            margin-bottom: 5px;
+        }
+
+        .step h4 { color: #1b5e20; margin-bottom: 5px; }
+
+        .step p { font-size: 0.9rem; color: #4a5b4c; }
+
+        /* ---------- Уровни ---------- */
+        .levels {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .level {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            border-radius: 40px;
+            padding: 12px 24px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e0f2e1;
+            flex-wrap: wrap;
+        }
+
+        .level-icon {
+            font-size: 1.4rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .level-range {
+            font-weight: 600;
+            color: #2e7d32;
+            min-width: 70px;
+        }
+
+        .level-name {
+            font-weight: 500;
+            color: #1b5e20;
+            min-width: 100px;
+        }
+
+        .level-desc { color: #6b7c6d; font-size: 0.9rem; }
+
+        /* ---------- Подарки ---------- */
+        .gifts {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .gift-item {
+            background: white;
+            border-radius: 16px;
+            padding: 20px 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            flex: 1 1 200px;
+            border: 2px solid #c8e6c9;
+        }
+
+        .gift-item .big {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4caf50;
+        }
+
+        /* ---------- FAQ ---------- */
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 10px;
+            border: 1px solid #e0f2e1;
+        }
+
+        .faq-item h4 {
+            color: #1b5e20;
+            margin-bottom: 5px;
+        }
+
+        .faq-item p { color: #4a5b4c; font-size: 0.95rem; }
+
+        /* ---------- Футер ---------- */
+        footer {
+            background: #1b5e20;
+            color: #c8e6c9;
+            padding: 30px 0;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        footer a { color: #a5d6a7; text-decoration: none; margin: 0 10px; }
+        footer a:hover { text-decoration: underline; }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #a5d6a7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #a5d6a7;
+            transition: 0.2s;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .social-icon:hover {
+            background: #2e7d32;
+            color: white;
+        }
+
+        /* ---------- Утилиты ---------- */
+        .text-center { text-align: center; }
+        .mt-20 { margin-top: 20px; }
+        .mb-20 { margin-bottom: 20px; }
+
+        .note {
+            font-size: 0.85rem;
+            color: #6b7c6d;
+            background: #f1f8e9;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border-left: 4px solid #a5d6a7;
+            margin: 15px 0;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, #c8e6c9, transparent);
+            margin: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.3rem; }
+            .header-top { flex-direction: column; text-align: center; }
+            .btn-group { flex-direction: column; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ================= ШАПКА ================= -->
+<header>
+    <div class="container">
+        <div class="header-top">
+            <img src="logo.png" alt="Логотип Чудный продукт" class="logo-img">
+            <h1>Чудный продукт</h1>
+        </div>
+        <p style="margin-top: 15px; color: #2e7d32; font-size: 1.1rem;">
+            Маленькие находки для большой любви к себе.
+        </p>
+    </div>
+</header>
+
+<!-- ================= ПРИВЕТСТВИЕ ================= -->
+<section id="about">
+    <div class="container">
+        <img src="couple.png" alt="Юлия и Евгений Чунц с продукцией Ersağ" class="img-block">
+        <h2>Добро пожаловать!</h2>
+        <p>Мы — Юлия и Евгений Чунц, официальные представители компании Ersağ.</p>
+        <p>Рады приветствовать вас на нашем сайте и познакомить с миром Ersağ — продукцией для дома, ухода за собой и повседневной жизни. В ассортименте компании представлены средства для уборки и стирки, косметика, уход за волосами и кожей, продукты личной гигиены и пищевые добавки.</p>
+        <p>Для нас Ersağ — это не просто каталог продуктов. Это возможность внимательнее относиться к тому, чем мы пользуемся каждый день, выбирать подходящие средства для себя и своего дома и постепенно находить то, что действительно становится частью нашей жизни.</p>
+        <p>Мы создали этот сайт, чтобы вам было легко познакомиться с продукцией, разобраться в ассортименте и сделать свой выбор без спешки и лишней информации.</p>
+        <p>Здесь мы будем делиться своими находками, рассказывать о продуктах простым языком и помогать подобрать то, что подходит именно вам.</p>
+    </div>
+</section>
+
+<!-- ================= КАТЕГОРИИ ================= -->
+<section id="products" style="background: #f9fdf9;">
+    <div class="container">
+        <h2>Добро пожаловать в «Чудный продукт»!</h2>
+        <p style="font-size: 1.2rem; color: #2e7d32; font-weight: 500;">
+            Здоровье, красота и чистый дом для тебя и твоих близких
+        </p>
+
+        <div class="btn-group">
+            <a href="#products-list" class="btn btn-primary">Посмотреть продукцию →</a>
+            <a href="#career" class="btn btn-outline">Узнать о возможностях →</a>
+        </div>
+
+        <p style="font-style: italic; color: #4caf50;">В гармонии с собой и миром!</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">✨</div>
+                <h3>Уход за собой</h3>
+                <p>Мягкие ритуалы для кожи и волос.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏠</div>
+                <h3>Чистый дом для семьи</h3>
+                <p>Средства для повседневной чистоты дома.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💚</div>
+                <h3>Здоровье и БАДы</h3>
+                <p>Продукты для ежедневного рациона. Не являются лекарством.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌸</div>
+                <h3>Красота каждый день</h3>
+                <p>Уход, который встраивается в обычный день.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">👨‍👩‍👧‍👦</div>
+                <h3>Для всей семьи</h3>
+                <p>Решения для дома и близких.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= О КОМПАНИИ ================= -->
+<section id="company">
+    <div class="container">
+        <h2>О компании Ersağ</h2>
+        <p>Международная компания с широким ассортиментом продукции для повседневной жизни.</p>
+        <p>Ersağ — направление проекта «Чудный продукт»: продукция для ухода, дома и ежедневных ритуалов. Актуальные сведения о компании — на официальном сайте.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🏭</div>
+                <h3>Производство</h3>
+                <p>Собственные производственные мощности компании.</p>
+                <div class="note">TODO: добавить подтверждённые детали с официального сайта.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌱</div>
+                <h3>Развитие продукта</h3>
+                <p>Ассортимент для ухода, дома и ежедневного использования.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌍</div>
+                <h3>Международное присутствие</h3>
+                <p>Компания представлена в разных странах.</p>
+                <div class="note">TODO: уточнить актуальный список рынков.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <h3>Контроль качества</h3>
+                <p>Продукция проходит внутренние процедуры контроля компании.</p>
+                <div class="note">TODO: не публиковать сертификаты без подтверждения.</div>
+            </div>
+        </div>
+
+        <div class="text-center mt-20">
+            <a href="#company" class="btn btn-primary">Подробнее о компании →</a>
+        </div>
+
+        <img src="mountains.png" alt="Горный пейзаж" class="img-block img-small">
+    </div>
+</section>
+
+<!-- ================= ПРОДУКЦИЯ ================= -->
+<section id="products-list" style="background: #f9fdf9;">
+    <div class="container">
+        <h2>Продукция Ersağ</h2>
+        <p style="font-size: 1.1rem; color: #2e7d32;">Ersağ – это забота о человеке и окружающем мире</p>
+        <p>Решения для каждого дня</p>
+
+        <img src="cosmetics.png" alt="Косметика и средства ухода" class="img-block">
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🧴</div>
+                <h3>Уход за кожей</h3>
+                <p>Ежедневный уход для лица и тела.</p>
+                <a href="#products-list" style="color: #4caf50; font-weight: 600; margin-top: 10px;">Подробнее →</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">💇</div>
+                <h3>Уход за волосами</h3>
+                <p>Сила и бережный уход по линейкам компании.</p>
+                <a href="#products-list" style="color: #4caf50; font-weight: 600; margin-top: 10px;">Подробнее →</a>
+            </div>
+        </div>
+
+        <img src="nature.jpg" alt="Природа, зелень" class="img-block img-small">
+    </div>
+</section>
+
+<!-- ================= ЗДОРОВЬЕ И ДОМ ================= -->
+<section id="health">
+    <div class="container">
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">💊</div>
+                <h3>Здоровье и БАДы</h3>
+                <p>БАДы не являются лекарством и не заменяют лечение.</p>
+                <a href="#health" style="color: #4caf50; font-weight: 600; margin-top: 10px;">Подробнее →</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧽</div>
+                <h3>Средства для дома</h3>
+                <p>Чистота и забота о пространстве, в котором живёте.</p>
+                <a href="#health" style="color: #4caf50; font-weight: 600; margin-top: 10px;">Подробнее →</a>
+            </div>
+        </div>
+
+        <img src="home-products.jpg" alt="Средства для дома и БАДы" class="img-block">
+    </div>
+</section>
+
+<!-- ================= СЕРТИФИКАТЫ ================= -->
+<section id="certs" style="background: #f9fdf9;">
+    <div class="container">
+        <h2>Сертификаты и документы</h2>
+        <p>Материалы компании Ersağ, размещённые в исходном виде.</p>
+
+        <div class="docs-grid">
+            <div class="doc-item"><img src="doc-renewal.jpg" alt="Продление товарного знака">Продление товарного знака</div>
+            <div class="doc-item"><img src="doc-85319.jpg" alt="Документ 85319">Документ 85319</div>
+            <div class="doc-item"><img src="doc-analysis.jpg" alt="Анализ-отчёт">Анализ-отчёт</div>
+            <div class="doc-item"><img src="doc-banyo-1.jpg" alt="Анализ Banyo & WC">Анализ Banyo & WC</div>
+            <div class="doc-item"><img src="doc-banyo-2.jpg" alt="Banyo & WC">Banyo & WC</div>
+            <div class="doc-item"><img src="doc-chamber.jpg" alt="Торговая палата Денизли">Торговая палата Денизли</div>
+            <div class="doc-item"><img src="doc-organic-1.jpg" alt="Сертификат органической продукции, стр. 1">Сертификат органической продукции, стр. 1</div>
+            <div class="doc-item"><img src="doc-organic-2.jpg" alt="Сертификат органической продукции, стр. 2">Сертификат органической продукции, стр. 2</div>
+            <div class="doc-item"><img src="doc-letter.jpg" alt="Письмо в компетентный орган">Письмо в компетентный орган</div>
+            <div class="doc-item"><img src="doc-cosmetic.jpg" alt="Уведомление о косметической продукции">Уведомление о косметической продукции</div>
+            <div class="doc-item"><img src="doc-renewal-2023.jpg" alt="Продление товарного знака, 2023">Продление товарного знака, 2023</div>
+            <div class="doc-item"><img src="doc-massage.jpg" alt="Сертификат массажного крема">Сертификат массажного крема</div>
+            <div class="doc-item"><img src="doc-spray.jpg" alt="Приёмка спрея для помещений">Приёмка спрея для помещений</div>
+            <div class="doc-item"><img src="doc-sale-2025.jpg" alt="Разрешение на продажу, 2025">Разрешение на продажу, 2025</div>
+            <div class="doc-item"><img src="doc-clean.jpg" alt="Приёмка средств для чистоты">Приёмка средств для чистоты</div>
+        </div>
+
+        <div class="note">
+            Документы приведены как предоставленные материалы. Перед использованием продукции сверяйтесь с актуальными официальными сведениями компании.
+        </div>
+    </div>
+</section>
+
+<!-- ================= КАК ЭТО РАБОТАЕТ ================= -->
+<section id="how">
+    <div class="container">
+        <h2>Как это работает?</h2>
+        <p style="color: #4caf50; font-weight: 500;">Просто и понятно</p>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h4>Регистрация</h4>
+                <p>Стать участником / партнёром — по желанию и правилам компании.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <h4>Личные покупки</h4>
+                <p>Пользоваться продукцией в повседневной жизни.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <h4>Рекомендации</h4>
+                <p>Рассказывать о продуктах, если они вам откликаются.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <h4>Команда</h4>
+                <p>При желании развивать свою структуру.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">05</div>
+                <h4>Развитие</h4>
+                <p>Изучать маркетинг-план и возможности системы.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= КАРЬЕРА ================= -->
+<section id="career" style="background: #f9fdf9;">
+    <div class="container">
+        <h2>Карьера и статусы</h2>
+        <p style="color: #4caf50; font-weight: 500;">Ваш путь — это новые возможности</p>
+
+        <div class="levels">
+            <div class="level"><div class="level-icon">🌱</div><div class="level-range">0–2</div><div class="level-name">Участник</div><div class="level-desc">карьерный уровень</div></div>
+            <div class="level"><div class="level-icon">🌿</div><div class="level-range">2–10</div><div class="level-name">Активный</div><div class="level-desc">карьерный уровень</div></div>
+            <div class="level"><div class="level-icon">🌳</div><div class="level-range">10–30</div><div class="level-name">Уровень 10%</div><div class="level-desc">карьерный уровень</div></div>
+            <div class="level"><div class="level-icon">🌳</div><div class="level-range">31–60</div><div class="level-name">Уровень 15%</div><div class="level-desc">карьерный уровень</div></div>
+            <div class="level"><div class="level-icon">🌳</div><div class="level-range">61–120</div><div class="level-name">Уровень 21%</div><div class="level-desc">карьерный уровень</div></div>
+            <div class="level"><div class="level-icon">🌳</div><div class="level-range">121–200</div><div class="level-name">Уровень 27%</div><div class="level-desc">карьерный уровень</div></div>
+            <div class="level"><div class="level-icon">🌳</div><div class="level-range">201+</div><div class="level-name">Уровень 33%</div><div class="level-desc">карьерный уровень</div></div>
+        </div>
+
+        <div class="note">
+            Проценты обозначают карьерный уровень / уровень расчёта по маркетинг-плану, а не «прибыль». Условия маркетинг-плана могут изменяться. Перед регистрацией проверяйте актуальные условия компании.
+        </div>
+    </div>
+</section>
+
+<!-- ================= ПОДАРКИ ================= -->
+<section id="gifts">
+    <div class="container">
+        <h2>Подарки и бонусы</h2>
+        <p style="color: #4caf50; font-weight: 500;">Дополнительные возможности на каждом этапе</p>
+
+        <div class="gifts">
+            <div class="gift-item"><div class="big">2+</div><p>баллов — 1 подарок</p></div>
+            <div class="gift-item"><div class="big">4+</div><p>баллов — 3 подарка</p></div>
+            <div class="gift-item" style="background: #e8f5e9;">
+                <div class="big">🎁</div>
+                <p>Специальные акции</p>
+                <p style="font-size: 0.85rem; color: #6b7c6d;">Дополнительные условия для новых участников и сезонные предложения.</p>
+                <div class="note" style="margin-top: 10px;">TODO: публиковать только подтверждённые акции.</div>
+            </div>
+        </div>
+
+        <div class="note">Акции и условия подарков могут изменяться.</div>
+    </div>
+</section>
+
+<!-- ================= FAQ И КОНТАКТЫ ================= -->
+<section id="faq" style="background: #f9fdf9;">
+    <div class="container">
+        <h2>Хочешь узнать больше?</h2>
+        <p>Я с радостью поделюсь информацией и помогу сделать первый шаг.</p>
+
+        <div class="btn-group">
+            <a href="https://t.me/your_telegram" target="_blank" rel="noopener" class="btn btn-primary">Написать мне в Telegram →</a>
+            <a href="#products-list" class="btn btn-outline">Посмотреть продукцию →</a>
+        </div>
+
+        <h3>Частые вопросы</h3>
+        <p style="color: #4caf50; font-weight: 500;">Ответы на самые популярные вопросы</p>
+
+        <div class="faq-item">
+            <h4>Что такое Ersağ?</h4>
+            <p>Ersağ – международная компания с продукцией для повседневной жизни: уход, дом и сопутствующие линейки. Официальный источник: ersag.com.tr. В проекте «Чудный продукт» Ersağ – одно из направлений, а не название всего бренда.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Можно ли просто покупать продукцию?</h4>
+            <p>Да, вы можете приобретать продукцию без регистрации партнёра.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Нужно ли становиться партнёром?</h4>
+            <p>Нет, это исключительно по желанию.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Как работают баллы?</h4>
+            <p>Баллы начисляются за покупки и влияют на карьерный уровень.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Как формируется карьерный уровень?</h4>
+            <p>В зависимости от накопленных баллов и активности.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Как работают подарки?</h4>
+            <p>Подарки предоставляются при достижении определённого количества баллов.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Гарантирован ли доход?</h4>
+            <p>Доход не гарантирован и зависит от вашей активности.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3>Чудный продукт</h3>
+        <p style="font-style: italic; color: #4caf50;">Маленькие находки для большой любви к себе.</p>
+
+        <div class="footer-links" style="margin-top: 20px;">
+            <a href="#about">О компании</a>
+            <a href="#products-list">Продукция</a>
+            <a href="#certs">Сертификаты</a>
+            <a href="#career">Возможности</a>
+            <a href="#how">Как начать</a>
+            <a href="#gifts">Подарки</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contacts">Контакты</a>
+        </div>
+
+        <div class="social-icons" id="contacts">
+            <a href="https://t.me/your_telegram" target="_blank" rel="noopener" class="social-icon">✈</a>
+            <a href="https://wa.me/your_number" target="_blank" rel="noopener" class="social-icon">WA</a>
+        </div>
+
+        <p class="text-center" style="color: #4caf50; font-weight: 500;">В гармонии с собой и миром!</p>
+    </div>
+</section>
+
+<!-- ================= ФУТЕР ================= -->
+<footer>
+    <div class="container">
+        <p>Информация о маркетинге приведена как ознакомительная и может изменяться.</p>
+        <p>Перед регистрацией уточняйте актуальные условия в вашей стране.</p>
+        <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+            © Чудный продукт — представители Ersağ
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

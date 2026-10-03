@@ -1,0 +1,129 @@
+.grid {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 18px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.card {
+  width: 100%;
+  background: var(--cream);
+  border: 1px solid rgba(197, 164, 119, 0.2);
+  border-radius: 18px;
+  padding: 10px 10px 14px;
+  cursor: pointer;
+  text-align: center;
+  color: inherit;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+
+.preview {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.photo {
+  object-fit: contain;
+  object-position: center;
+}
+
+.caption {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--blue-dark);
+  line-height: 1.3;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 52rem;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(32, 52, 71, 0.55);
+  cursor: pointer;
+}
+
+.frame {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 48px 20px 20px;
+  border: 1px solid rgba(197, 164, 119, 0.28);
+}
+
+.full {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.frame p {
+  text-align: center;
+  margin-top: 12px;
+  font-family: var(--font-serif);
+  color: var(--blue-dark);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--blue-dark);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

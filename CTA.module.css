@@ -1,0 +1,49 @@
+.wrap {
+  position: relative;
+  overflow: hidden;
+  padding: 88px 0;
+  text-align: center;
+  background: #eef7f0;
+}
+
+.wrap h2 {
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  margin-bottom: 12px;
+}
+
+.wrap p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.left,
+.right {
+  position: absolute;
+  width: 200px;
+  pointer-events: none;
+  animation: leaf-sway 6s ease-in-out infinite alternate;
+}
+
+.left {
+  left: -20px;
+  bottom: -10px;
+}
+
+.right {
+  right: -20px;
+  top: -10px;
+  transform: scaleX(-1);
+}
+
+@media (max-width: 700px) {
+  .wrap {
+    padding: 64px 0;
+  }
+}

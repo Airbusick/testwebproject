@@ -1,0 +1,88 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.text {
+  margin: 18px 0 22px;
+  max-width: 38rem;
+}
+
+.cards {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.cards li {
+  display: flex;
+  gap: 10px;
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 14px;
+  border: 1px solid rgba(197, 164, 119, 0.16);
+}
+
+.cards h3 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.cards p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.cards svg {
+  color: var(--green);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.photo {
+  margin: 0;
+  position: relative;
+}
+
+.nature {
+  position: relative;
+  height: 420px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.natureImg {
+  object-fit: cover;
+  object-position: 50% 18%;
+}
+
+.deco {
+  position: absolute;
+  width: 160px;
+  right: -24px;
+  top: -28px;
+  animation: leaf-sway 7s ease-in-out infinite alternate;
+}
+
+.photo figcaption {
+  text-align: center;
+  font-size: 1.45rem;
+  margin-top: 14px;
+}
+
+@media (max-width: 900px) {
+  .grid,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .nature {
+    height: 280px;
+  }
+}

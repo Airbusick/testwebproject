@@ -1,0 +1,170 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 0 24px;
+  min-height: calc(100vh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(143, 207, 240, 0.35), transparent 50%),
+    linear-gradient(180deg, #e7f6fd 0%, var(--cream) 62%);
+  z-index: 0;
+}
+
+.leavesLeft,
+.leavesRight {
+  position: absolute;
+  width: 220px;
+  pointer-events: none;
+  z-index: 1;
+  animation: leaf-sway 6s ease-in-out infinite alternate;
+}
+
+.leavesLeft {
+  left: -20px;
+  top: 40px;
+}
+
+.leavesRight {
+  right: -30px;
+  bottom: 20px;
+  transform: scaleX(-1);
+}
+
+.grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.portraitWrap {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  margin: 12px auto 0;
+  text-align: center;
+}
+
+.ring {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+  overflow: visible;
+  background: transparent;
+}
+
+.logoImg {
+  object-fit: contain;
+  object-position: center;
+}
+
+.personal {
+  position: absolute;
+  right: 8%;
+  bottom: 22%;
+  font-family: var(--font-script);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--blue-dark);
+  line-height: 0.9;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.7);
+}
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 8px 0 18px;
+  max-width: 38rem;
+}
+
+.greeting p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.slogan {
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  margin: 0 0 16px;
+  max-width: 28rem;
+}
+
+.title {
+  font-size: clamp(1.85rem, 3.6vw, 2.85rem);
+  margin-bottom: 10px;
+}
+
+.sub {
+  color: var(--text-muted);
+  font-size: 1.12rem;
+  margin-bottom: 22px;
+}
+
+.benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  color: var(--green-dark);
+  font-size: 0.92rem;
+}
+
+.benefits li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.harmony {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-top: 28px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .greeting,
+  .slogan {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .benefits,
+  .actions {
+    justify-content: center;
+  }
+
+  .personal {
+    right: 12%;
+    bottom: 18%;
+  }
+}
